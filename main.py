@@ -18,7 +18,7 @@ async def on_startup(_):
 
 @dp.message_handler(commands=['start'])
 async def start(message: types.Message):
-    file = open('./logo.jpg', 'rb')
+    file = open('images/logo.jpg', 'rb')
     await message.answer_photo(file)
     await message.answer(f'<b>Здравствуйте, {message.from_user.first_name} '
                           f'{message.from_user.last_name} {emoji.emojize(":brain:")}! </b> '
@@ -38,7 +38,7 @@ async def callback_message(callback):
                               f'{emoji.emojize(":eyes:")}',
                               reply_markup=kb.markup_prtfl)
     if callback.data == 'order':
-        finger = open('./finger.jpeg', 'rb')
+        finger = open('images/finger.jpeg', 'rb')
         await uk.send_photo(callback.from_user.id, finger,
                             f'Выберите категорию, которую хотите заказать',
                             reply_markup=kb.markup_order)
@@ -104,7 +104,7 @@ async def process_successful_payment(message: types.Message):
             email = val["email"]
             await db.add_user(phone_number, email, in_payload)
         print(f'{key} = {val}')
-    kot = open('./kot.jpg', 'rb')
+    kot = open('images/kot.jpg', 'rb')
     await uk.send_photo(message.chat.id, kot, f'Ваша оплата успешно прошла {emoji.emojize(":unicorn:")}. '
         f'Ожидайте, в течение 24 часов с вами свяжутся для составления ТЗ и '
         f'обсуждения деталей заказа{emoji.emojize(":sleeping_face:")}.'

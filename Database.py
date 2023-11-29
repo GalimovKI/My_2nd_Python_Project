@@ -3,7 +3,7 @@ import sqlite3
 
 async def conn_start():
     global conn, cur
-    conn = sqlite3.connect('unreal_kirill.db')
+    conn = sqlite3.connect('Database/unreal_kirill.db')
     cur = conn.cursor()
     cur.execute("CREATE TABLE IF NOT EXISTS users("
             "id INTEGER PRIMARY KEY AUTOINCREMENT,"
